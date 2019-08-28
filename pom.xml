@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.critc</groupId>
+    <artifactId>rail-network</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>Maven</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://maven.apache.org/</url>
+    <inceptionYear>2001</inceptionYear>
+
+    <properties>
+        <jdk.version>1.8</jdk.version>
+        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <com.cdpf.version>1.0-SNAPSHOT</com.cdpf.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- Import dependency management from CDPF_v1 -->
+                <groupId>com.critc</groupId>
+                <artifactId>cdpf</artifactId>
+                <version>${com.cdpf.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.critc</groupId>
+                <artifactId>cdpf_core</artifactId>
+                <version>${com.cdpf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.critc</groupId>
+                <artifactId>cdpf_core_web</artifactId>
+                <type>war</type>
+                <version>${com.cdpf.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>com.critc</id>
+            <name>com.critc</name>
+            <url>http://localhost:8081/nexus/content/groups/com.critc/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>org.mose</id>
+            <name>org.mose</name>
+            <url>http://localhost:8081/nexus/content/groups/org.mose/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <build>
+        <finalName>rail-network</finalName>
+        <defaultGoal>compile</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>com.critc.rail-network.snapshots</id>
+            <name>com.critc.rail-network.snapshots</name>
+            <url>http://localhost:8081/nexus/content/repositories/com.critc.rail-network.snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
